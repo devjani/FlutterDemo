@@ -11,7 +11,7 @@ void main() {
       '/Login': (BuildContext context) => new LoginScreen(),
     },
     theme: new ThemeData(
-      primaryColor: Colors.blue,
+      primaryColor: Colors.deepOrangeAccent,
       backgroundColor: Colors.deepOrangeAccent,
       hintColor: Colors.deepOrangeAccent
     ),
