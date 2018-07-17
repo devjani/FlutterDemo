@@ -34,7 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   _onSelectItem(int index,BuildContext _context) {
-    setState(() => _selectedDrawerIndex = 0);
+    setState(() =>(index==1?_selectedDrawerIndex = 0:_selectedDrawerIndex = index));
+
     if (index == 1) {
       Navigator.of(context).popAndPushNamed('/Login');
     }
@@ -86,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            new Column(children: drawerOptions)
+            new Column(children: drawerOptions),
           ],
         ),
       ),
