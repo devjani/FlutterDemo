@@ -57,9 +57,13 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Center(
-          child: new Image(
-        image: new AssetImage('images/splash.png')
-      )),
+       //  child: new Padding(padding: const EdgeInsets.only(left:0.0,right: 0.0),
+         child:
+             new Image(
+             image: new AssetImage('images/splash.png')
+      ),
+         ),
     );
+    //);
   }
 }

@@ -68,12 +68,21 @@ class _HomeScreenState extends State<HomeScreen> {
         child: new Column(
           children: <Widget>[
             new UserAccountsDrawerHeader(
-                accountName: new Text("Jani Dev"), accountEmail: null,
-              currentAccountPicture: new CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child:new Image(
-                      image: new AssetImage('images/splash.png')
-                  )
+                accountName: new Text("Jani Dev"),
+                accountEmail: new Text("janidev94@gmail.com"),
+                currentAccountPicture: new CircleAvatar(
+                backgroundColor: Colors.white,
+                child: new Container(
+                    width: 190.0,
+                    height: 190.0,
+                    decoration: new BoxDecoration( //This code is for round image in Circle avatar
+                        shape: BoxShape.circle,
+                        image: new DecorationImage(
+                            fit: BoxFit.fill,
+                            image: new AssetImage(
+                                "images/profile.png")
+                        )
+                    ))
               ),
             ),
 
