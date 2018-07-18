@@ -21,11 +21,7 @@ class _LoginScreenState extends State<LoginScreen>
 
   @override
   Widget build(BuildContext context) {
-    var buttonSqueezeAnimation = new Tween(
-      begin: 320.0,
-      end: 70.0,
-    ).animate(new CurvedAnimation(
-        parent: animationController, curve: new Interval(0.0, 0.250)));
+ 
     Future<Null> animateLogo() async {
       try {
         await animationController.repeat();
@@ -75,10 +71,7 @@ class _LoginScreenState extends State<LoginScreen>
 
     final loginButton = Padding(
       padding: EdgeInsets.symmetric(
-          vertical: 20.0,
-          horizontal: buttonSqueezeAnimation.value > 0.0
-              ? 0.0
-              : buttonSqueezeAnimation.value),
+          vertical: 20.0),
       child: Material(
         borderRadius: BorderRadius.circular(30.0),
         shadowColor: Colors.deepOrangeAccent.shade100,
