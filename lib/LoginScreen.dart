@@ -1,19 +1,53 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => new _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
+  AnimationController animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = new AnimationController(
+      vsync: this,
+      duration: new Duration(seconds: 7),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final logo = Hero(
-      tag: 'hero',
-      child: CircleAvatar(
-        backgroundColor: Colors.transparent,
-        radius: 48.0,
-        child: Image.asset('images/logo.png'),
+    var buttonSqueezeAnimation = new Tween(
+      begin: 320.0,
+      end: 70.0,
+    ).animate(new CurvedAnimation(
+        parent: animationController, curve: new Interval(0.0, 0.250)));
+    Future<Null> animateLogo() async {
+      try {
+        await animationController.repeat();
+      } on TickerCanceled {}
+    }
+
+    final logo = Container(
+      alignment: Alignment.center,
+      color: Colors.white,
+      child: new AnimatedBuilder(
+        animation: animationController,
+        child: new Container(
+          height: 150.0,
+          width: 150.0,
+          child: new Image.asset('images/logo.png'),
+        ),
+        builder: (BuildContext context, Widget _widget) {
+          return new Transform.rotate(
+            angle: animationController.value * 6.3,
+            child: _widget,
+          );
+        },
       ),
     );
 
@@ -40,17 +74,20 @@ class _LoginScreenState extends State<LoginScreen> {
     );
 
     final loginButton = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
+      padding: EdgeInsets.symmetric(
+          vertical: 20.0,
+          horizontal: buttonSqueezeAnimation.value > 0.0
+              ? 0.0
+              : buttonSqueezeAnimation.value),
       child: Material(
         borderRadius: BorderRadius.circular(30.0),
         shadowColor: Colors.deepOrangeAccent.shade100,
-        elevation: 5.0,
+        elevation: 10.0,
         child: MaterialButton(
-          minWidth: 200.0,
           height: 42.0,
-          onPressed: () {
-            Navigator.of(context).pushNamed("HomeScreen");
-          },
+          minWidth: 200.0,
+          onPressed: () => animateLogo(),
+          //Navigator.of(context).pushNamed("/HomeScreen"),
           color: Colors.deepOrangeAccent,
           child: Text('Log In', style: TextStyle(color: Colors.white)),
         ),
