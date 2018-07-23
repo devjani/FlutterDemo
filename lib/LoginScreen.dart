@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen>
 
   @override
   Widget build(BuildContext context) {
- 
+
     Future<Null> animateLogo() async {
       try {
         await animationController.repeat();
@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen>
         ),
         builder: (BuildContext context, Widget _widget) {
           return new Transform.rotate(
-            angle: animationController.value * 6.3,
+            angle: animationController.value * 30.3,
             child: _widget,
           );
         },

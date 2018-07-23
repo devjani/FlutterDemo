@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_splashscreen/DrawerMenu.dart';
-import 'package:flutter_app_splashscreen/LoginScreen.dart';
+import 'package:flutter_app_splashscreen/Utils/routes.dart';
 import 'dart:async';
-
+import 'package:flutter_app_splashscreen/Utils/routeConstant.dart';
 void main() {
   runApp(new MaterialApp(
     home: new SplashScreen(),
-    routes: <String, WidgetBuilder>{
-      '/HomeScreen': (BuildContext context) => new HomeScreen(),
-      '/Login': (BuildContext context) => new LoginScreen(),
-    },
+    routes: routes,
     theme: new ThemeData(
       primaryColor: Colors.deepOrangeAccent,
       backgroundColor: Colors.deepOrangeAccent,
@@ -34,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed('/HomeScreen');
+    Navigator.of(context).pushReplacementNamed(HomeScreenTag);
   }
 
   @override

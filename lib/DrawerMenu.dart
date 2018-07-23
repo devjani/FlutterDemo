@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_app_splashscreen/Utils/routeConstant.dart';
 class DrawerItem {
   String title;
   IconData icon;
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         (index == 1 ? _selectedDrawerIndex = 0 : _selectedDrawerIndex = index));
 
     if (index == 1) {
-      Navigator.of(context).popAndPushNamed('/Login');
+      Navigator.of(context).popAndPushNamed(LoginTag);
     } else {
       Navigator.of(context).pop(); // close the drawer
     }
